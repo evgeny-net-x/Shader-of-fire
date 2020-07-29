@@ -2,7 +2,7 @@ Shader "Unlit/FireShader"
 {
         Properties
         {
-                [NoScaleOffset] [MainTexture] _FireTex("Fire Texture", 2D) = "white" {}
+                [NoScaleOffset] [MainTexture] _FireTex("Fire Texture", 2D) = "black" {}
 		_FireDir("Fire Direction", Vector) = (0, 1, 0, 0)
 		
 		_FireColor1("Fire Color1", Color) = (1, 1, 0, 0)
@@ -23,23 +23,14 @@ Shader "Unlit/FireShader"
         SubShader
         {
                 Tags {"Queue" = "Transparent"}
-            Blend SrcAlpha OneMinusSrcAlpha
+		Blend SrcAlpha OneMinusSrcAlpha
+
                 Pass
                 {
                         CGPROGRAM
                     
 			#pragma vertex vert
 			#pragma fragment frag
-			
-			struct appdata {
-				float2 uv_FireTex: TEXCOORD0;
-				float4 vertex: POSITION;
-			};
-      
-			struct v2f {
-				float2 uv_FireTex: TEXCOORD0;
-				float4 vertex: SV_POSITION;
-			};
 			
 			float rand1dTo1d(float2 value, float mutator = 0.546)
 			{
@@ -116,21 +107,29 @@ Shader "Unlit/FireShader"
 				return lerp(previousCellLinePoint, nextCellLinePoint, interpolator);
 			}
 
-                    
-                        v2f vert(appdata IN)
-                        {
-				v2f OUT;
-				
-				OUT.uv_FireTex = IN.uv_FireTex;
-				OUT.vertex = UnityObjectToClipPos(IN.vertex);
-				
-				return OUT;
-                        }
+			
+			
+			
+			
+			
+			
+			
+
+			
+			struct appdata {
+				float2 uv_FireTex: TEXCOORD0;
+				float4 vertex: POSITION;
+			};
+			
+			struct v2f {
+				float2 uv_FireTex: TEXCOORD0;
+				float3 worldPos: TEXCOORD1;
+				float4 vertex: SV_POSITION;
+			};
                     
 			float2 _FireDir;
 			float _VoronoiScale;
 			float _PerlinScale;
-			float _MixNoises;
 			float _MixMaskAndNoise;
 			int _PixelCount;
                         fixed4 _FireColor;
@@ -141,6 +140,17 @@ Shader "Unlit/FireShader"
 			fixed _FireEdge2;
 			fixed _FireEdge3;
                         sampler2D _FireTex;
+			
+                        v2f vert(appdata IN)
+                        {
+				v2f OUT;
+				
+				OUT.uv_FireTex = IN.uv_FireTex;
+				OUT.worldPos = mul(unity_ObjectToWorld, IN.vertex);
+				OUT.vertex = UnityObjectToClipPos(IN.vertex);
+				
+				return OUT;
+                        }
 			
 			fixed4 scale(fixed4 vec, float s)
 			{
@@ -217,12 +227,15 @@ Shader "Unlit/FireShader"
 
                         fixed4 frag(v2f IN): COLOR
                         {
+				IN.uv_FireTex.x = IN.worldPos.x;
+				
 				fixed2 UV = IN.uv_FireTex;
 				fixed2 pixelUV = pixelatedUV(UV, _PixelCount);
 				
 				fixed4 fireColor = getFireColor(pixelUV);
 				fixed fireAlpha = colorToAlpha(fireColor);
 				fixed4 splitedFireColor = splitFire(fireAlpha);
+				
 				return splitedFireColor;
 			}
                     

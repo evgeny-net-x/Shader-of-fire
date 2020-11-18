@@ -2,17 +2,17 @@
 Implementation of fire-shader on Cg language in Unity ShaderLab. At inspector of Unity will be available properties to configure shader. Files *.png needs to create mask of fire.
 
 ## Available properties
-| Properties               | Operation              |
-| ------------------------ | ---------------------- |
-| `Fire texture`           | `2D`                   |
-| `Fire direction`         | `Vector`               |
-| `Fire color 1`           | `Color`                |
-| `Fire color 2`           | `Color`                |
-| `Fire color 3`           | `Color`                |
-| `Fire edge 1`            | `Range(0, 1)`          |
-| `Fire edge 2`            | `Range(0, 1)`          |
-| `Fire edge 3`            | `Range(0, 1)`          |
-| `Perlin scale`           | `Range(0, 1)`          |
-| `Voronoi scale`          | `Range(0, 1)`          |
-| `Mix mask and noise`     | `Range(0, 1)`          |
-| `Pixel count`            | `Int`                  |
+| Properties               | Operation              | Description                   |
+| ------------------------ | ---------------------- | ----------------------------- |
+| `Fire texture`           | `2D`                   | `Mask of fire`                |
+| `Fire direction`         | `Vector`               | `Direction and speed of fire` |
+| `Fire color 1`           | `Color`                | `Color of highest fire`       |
+| `Fire color 2`           | `Color`                | `Color of middle fire`        |
+| `Fire color 3`           | `Color`                | `Color of lowest fire`        |
+| `Fire edge 1`            | `Range(0, 1)`          | `Height of highest fire`      |
+| `Fire edge 2`            | `Range(0, 1)`          | `Height of middle fire`       |
+| `Fire edge 3`            | `Range(0, 1)`          | `Height of lowest fire`       |
+| `Perlin scale`           | `Range(0, 1)`          | `Percent of Perlin noise`     |
+| `Voronoi scale`          | `Range(0, 1)`          | `Percent of Voronoi noise`    |
+| `Mix mask and noise`     | `Range(0, 1)`          | `Percent of mask`             |
+| `Pixel count`            | `Int`                  | `Amount of pixelation`        |

@@ -1,5 +1,5 @@
-# Fire-Shader
-Implementation of fire-shader on Cg language in Unity ShaderLab. At inspector of Unity will be available properties to configure shader. Files *.png needs to create mask of fire.
+# Shader of fire
+Shader of fire implemented on Cg language for Unity ShaderLab. At inspector of Unity will be available properties to configure shader. Files *.png needs to create mask of fire.
 
 ## Available properties
 | Properties               | Operation              | Description                   |

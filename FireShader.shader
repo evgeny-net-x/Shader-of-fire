@@ -227,7 +227,7 @@ Shader "Unlit/FireShader"
 
                         fixed4 frag(v2f IN): COLOR
                         {
-				IN.uv_FireTex.x = IN.worldPos.x;
+				//IN.uv_FireTex.x = IN.worldPos.x;
 				
 				fixed2 UV = IN.uv_FireTex;
 				fixed2 pixelUV = pixelatedUV(UV, _PixelCount);

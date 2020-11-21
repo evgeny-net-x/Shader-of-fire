@@ -20,4 +20,4 @@ Shader of fire implemented on Cg language for Unity ShaderLab. At inspector of U
 | `Pixel count`            | `Int`                  | `Amount of pixelation`        |
 
 ## Examples:
-<img src="/example2.png" alt="sdf" width="300" height="300"/><img src="/example3.png" width="300" height="300"/>
+<img src="/example2.png" width="300" height="300"/><img src="/example3.png" width="300" height="300"/>

@@ -1,6 +1,8 @@
 # Shader of fire
 Shader of fire implemented on Cg language for Unity ShaderLab. At inspector of Unity will be available properties to configure shader. Files *.png needs to create mask of fire.
 
+<img src="/example1.png" width="300" height="300"/>
+
 ## Available properties
 | Properties               | Operation              | Description                   |
 | ------------------------ | ---------------------- | ----------------------------- |
@@ -16,3 +18,6 @@ Shader of fire implemented on Cg language for Unity ShaderLab. At inspector of U
 | `Voronoi scale`          | `Range(0, 1)`          | `Percent of Voronoi noise`    |
 | `Mix mask and noise`     | `Range(0, 1)`          | `Percent of mask`             |
 | `Pixel count`            | `Int`                  | `Amount of pixelation`        |
+
+## Examples:
+<img src="/example2.png" alt="sdf" width="300" height="300"/><img src="/example3.png" width="300" height="300"/>
